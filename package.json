@@ -1,0 +1,36 @@
+{
+  "name": "cmdline-tools",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HorstFrank/cmdline-tools.git"
+  },
+  "keywords": [],
+  "author": "Boris Baumann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HorstFrank/cmdline-tools/issues"
+  },
+  "homepage": "https://github.com/HorstFrank/cmdline-tools#readme",
+  "devDependencies": {
+    "@types/mongodb": "^3.6.8",
+    "@types/node": "^14.14.31",
+    "@types/prompts": "^2.0.9",
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.6.3",
+    "prompts": "^2.4.0"
+  }
+}
