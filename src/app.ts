@@ -11,8 +11,10 @@ import {
   addPasswordObject,
   closeDb,
   connectDb,
+  deletePasswordObject,
   getCollection,
   getPasswordObject,
+  updateFieldObject,
   updatePassword,
 } from "./db";
 dotenv.config();
@@ -28,9 +30,14 @@ const run = async () => {
     // await addPasswordObject({name: "Leon", pswd: "1234"});
 
     // const x = await getPasswordObject("Leon");
-    // await addPasswordObject({name: "Leon4", pswd: "1234"});
-    await updatePassword("Leon", "qwerty");
+    //
+    // await addPasswordObject({name: "Leonxxx", pswd: "1234"});
+    await updateFieldObject("Leon17", {pswd: "yyyxxx"});
+    //
+    // await updatePassword("Leon17", "xx");
     // getPasswordObjectDelete
+    // const delCheck = await deletePasswordObject("Leon2");
+    // console.log(`Der Datensatz wurde ${delCheck ? "" : "nicht"} upgedated.`);
 
     // console.log(x);
     await closeDb();
