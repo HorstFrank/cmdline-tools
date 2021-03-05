@@ -1,6 +1,6 @@
-export function sortByTitle(a, b) {
-  a = a.title;
-  b = b.title;
+export function sortByKey(a, b, key) {
+  a = a[key];
+  b = b[key];
   // return a > b ? 1 : a < b ? -1 : 0;
   if (a > b) {
     return 1;

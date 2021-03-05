@@ -1,5 +1,5 @@
 import {Db, MongoClient} from "mongodb";
-import {stringify} from "querystring";
+// import {stringify} from "querystring";
 
 let client: MongoClient = null;
 let db: Db = null;
@@ -14,13 +14,11 @@ export async function connectDb(url: string, dbname: string) {
   client = await MongoClient.connect(url, {
     useUnifiedTopology: true,
   });
-
   db = client.db(dbname);
-  //  console.log("Connected to DB!");
 }
 
-export function getCollection(collectionName: string) {
-  return db.collection(collectionName);
+export async function getCollection(collectionName: string) {
+  return await db.collection(collectionName);
 }
 
 export function closeDb() {
@@ -55,42 +53,3 @@ export async function updatePassword(destName: string, newPassword: string): Pro
   // const changed = await updateFieldObject(destName, {pswd: newPassword});
   return await updateFieldObject(destName, {pswd: newPassword});
 }
-
-/*
-   db.restaurant.updateOne(
-      { "name" : "Central Perk Cafe" },
-      { $set: { "violations" : 3 } }
-   );
-
-
-The updateOne() method has the following syntax:
-
-db.collection.updateOne(
-   <filter>,
-   <update>,
-   {
-     upsert: <boolean>,
-     writeConcern: <document>,
-     collation: <document>,
-     arrayFilters: [ <filterdocument1>, ... ],
-     hint:  <document|string>        // Available starting in MongoDB 4.2.1
-   }
-)
-
-db.orders.deleteMany( { "client" : "Crude Traders Inc." } );
-
-*/
-
-// in db auslagern:
-
-// collection function
-// await db.collection("inverntoy")
-
-// await db.collection("inverntoy").insertMany([
-//   {
-//     einhundertundeins: "zwei",
-//     einhundertunddrei: "vier",
-//     einhundertundfünf: 6,
-//     einhundertund7: {acht: 9, zehn: "elf"},
-//   },
-// ]);
