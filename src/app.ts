@@ -1,12 +1,13 @@
-// const prompts = require('prompts');
-// import prompts from "prompts";
+import prompts from "prompts";
 // import {printMsgRight, printMsgWrong} from "./print";
 // import {hasAccess} from "./checks";
-// import {questions} from "./questions";
-// import {questions} from "./questions";
 
-import {MongoClient} from "mongodb";
+// import {questions} from "./questions";
+// console.log(questions);
+
+// import {MongoClient} from "mongodb";
 import dotenv from "dotenv";
+import {decryptString, encryptString} from "./../utils/crypt";
 import {
   addPasswordObject,
   closeDb,
@@ -19,42 +20,115 @@ import {
 } from "./db";
 dotenv.config();
 
+const questions = {
+  init: [
+    {
+      type: "text",
+      name: "masterPswd",
+      message: "Your Masterpswd? ",
+    },
+    {
+      type: "multiselect",
+      name: "action",
+      message: "What do you want to do?",
+      choices: [
+        {title: "Set a new Password", value: "set"},
+        {title: "Get a Password", value: "get"},
+        {title: "Edit a Pasword", value: "edit"},
+        {title: "Delete an Entry", value: "delete"},
+      ],
+    },
+  ],
+  set: [
+    {
+      type: "text",
+      name: "serviceName",
+      message: "The name of the Service? ",
+    },
+    {
+      type: "password",
+      name: "serviceName",
+      message: "The name of the Service? ",
+    },
+  ],
+  get: [
+    {
+      type: "text",
+      name: "serviceName",
+      message: "The name of the Service? ",
+    },
+  ],
+  edit: [
+    {
+      type: "text",
+      name: "serviceName",
+      message: "The name of the Service? ",
+    },
+  ],
+  delete: [
+    {
+      type: "text",
+      name: "serviceName",
+      message: "The name of the Service? ",
+    },
+  ],
+};
+
 const run = async () => {
   const url = process.env.MONGODB_URL;
   // console.log(url);
+  //
 
   try {
+    console.log(
+      "_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-"
+    );
+    console.log("                       Welcome to xxxx");
+    console.log(
+      "_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-_-^-"
+    );
+    // console.log(questions.init);
+
+    // const response = await prompts(questions.init);
+    const response = await prompts([
+      {
+        type: "text",
+        name: "masterPswd",
+        message: "Your Masterpswd? ",
+      },
+      {
+        type: "multiselect",
+        name: "action",
+        message: "What do you want to do?",
+        choices: [
+          {title: "Get a Password", value: "get"},
+          {title: "Set a new Password", value: "set"},
+          {title: "Edit a Pasword", value: "edit"},
+          {title: "Delete an Entry", value: "delete"},
+        ],
+      },
+    ]);
+    // console.log(response);
+
     // in db auslagern:
     await connectDb(url, "cmdline-tools-boris");
+    // console.log({client});
     // await getCollection("inverntoy");
     // await addPasswordObject({name: "Leon", pswd: "1234"});
-
     // const x = await getPasswordObject("Leon");
     //
-    // await addPasswordObject({name: "Leonxxx", pswd: "1234"});
-    await updateFieldObject("Leon17", {pswd: "yyyxxx"});
+
+    // await addPasswordObject({
+    //   name: "Boris sein W-Lan",
+    //   pswd: encryptString("vercryptetes und geheimes pswd", process.env.CRYPTO_MASTER_KEY),
+    // });
+    // await updateFieldObject("WLAN", {
+    //   pswd: encryptString("vercryptetes und geheimes pswd", process.env.CRYPTO_MASTER_KEY),
+    // });
     //
-    // await updatePassword("Leon17", "xx");
-    // getPasswordObjectDelete
     // const delCheck = await deletePasswordObject("Leon2");
     // console.log(`Der Datensatz wurde ${delCheck ? "" : "nicht"} upgedated.`);
-
-    // console.log(x);
     await closeDb();
-
-    // collection function
-    // await db.collection("inverntoy")
-
-    // await db.collection("inverntoy").insertMany([
-    //   {
-    //     einhundertundeins: "zwei",
-    //     einhundertunddrei: "vier",
-    //     einhundertundfünf: 6,
-    //     einhundertund7: {acht: 9, zehn: "elf"},
-    //   },
-    // ]);
-
-    // client.close();
   } catch (error) {
     console.error(error);
   }
