@@ -30,7 +30,7 @@ export async function getPasswordObject(getname: string): Promise<PasswordDoc | 
     return null;
   }
 
-  /// sdfgs dfgsdf
+  /// NEUxxx NEU
 
   return {
     name: passwordDoc.name,
