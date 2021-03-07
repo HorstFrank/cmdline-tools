@@ -1,0 +1,31 @@
+
+## TEST the REST
+
+### Just a URL
+GET http://localhost:3333
+
+### test
+GET http://localhost:3333/document
+
+### test 2
+GET http://localhost:3333/document/collection/
+
+### test 2
+GET http://localhost:3333/document/collection/id
+
+### test 2
+GET http://localhost:3333/document/collection/?abc=foo&def=%5Basf%5D&xyz=5
+
+### test 2
+GET http://localhost:3333/document?abc=foo&def=%5Basf%5D&xyz=5
+
+### test 2
+DELETE http://localhost:3333/bla/?name=blubb
+
+## TEST the PSWDTOOL
+
+### Test 1
+GET http://localhost:3333/pswd-databaseXXXXX/names
+
+### Test 1
+GET http://localhost:3333/pswd-database/names

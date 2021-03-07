@@ -1,13 +1,8 @@
-export const questions = () => {
+export const questions = (): any => {
   return {
-    init: [
+    start: [
       {
-        type: "text",
-        name: "masterPswd",
-        message: "Your Masterpswd? ",
-      },
-      {
-        type: "multiselect",
+        type: "select",
         name: "action",
         message: "What do you want to do?",
         choices: [
@@ -15,26 +10,25 @@ export const questions = () => {
           {title: "Get a Password", value: "get"},
           {title: "Edit a Pasword", value: "edit"},
           {title: "Delete an Entry", value: "delete"},
+          {title: "EXIT", value: "exit"},
         ],
       },
     ],
     set: [
       {
         type: "text",
-        name: "serviceName",
-        message: "The name of the Service? ",
+        name: "name",
+        message: "The Name of the Service ",
       },
       {
         type: "password",
-        name: "serviceName",
-        message: "The name of the Service? ",
+        name: "pswd1",
+        message: "The Password of this Service?",
       },
-    ],
-    get: [
       {
-        type: "text",
-        name: "serviceName",
-        message: "The name of the Service? ",
+        type: "password",
+        name: "pswd2",
+        message: "The Password of this Service again?",
       },
     ],
     edit: [
